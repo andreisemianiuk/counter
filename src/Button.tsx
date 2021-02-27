@@ -7,12 +7,12 @@ type ButtonType = {
   callback: () => void
 }
 
-function Button(props: ButtonType) {
+function Button({title,value,callback}: ButtonType) {
   const clickHandler = () => {
-    props.callback()
+    callback()
   }
-  const disabled = (props.title === 'inc' && props.value >= 5)
-    || (props.title === 'reset' && props.value === 0)
+  const disabled = (title === 'inc' && value >= 5)
+    || (title === 'reset' && value === 0)
 
   return (
     <button
@@ -20,7 +20,7 @@ function Button(props: ButtonType) {
       onClick={clickHandler}
       disabled={disabled}
     >
-      {props.title}
+      {title}
     </button>
   )
 }

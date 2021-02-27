@@ -5,11 +5,11 @@ type DisplayType = {
   value: number
 }
 
-function Display(props: DisplayType) {
+function Display({value}: DisplayType) {
 
   return (
     <div className='display-wrapper'>
-      <div className={`display-count ${props.value === 5 ? 'red' : ''}`}>{props.value}</div>
+      <div className={`display-count ${value === 5 ? 'red' : ''}`}>{value}</div>
     </div>
   )
 }
