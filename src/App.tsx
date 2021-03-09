@@ -13,7 +13,7 @@ function App() {
   const reset = () => {
     setValue(0)
   }
-
+//comment
   return (
     <div className='container'>
       <div className='counter'>
