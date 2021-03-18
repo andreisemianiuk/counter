@@ -14,7 +14,7 @@ function Button({error,editMode, title, startValue, maxValue, callback}: ButtonT
   const clickHandler = () => {
     callback()
   }
-  const disabled = error || editMode || (title === 'inc' && startValue >= maxValue)
+  const disabled = error || (editMode && error) || (title === 'inc' && startValue >= maxValue)
     || (title === 'reset' && maxValue !== startValue)
   
   return (
