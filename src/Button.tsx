@@ -2,18 +2,21 @@ import React from 'react'
 import './App.css'
 
 type ButtonType = {
+  editMode?: boolean
+  error?: boolean
   title: string
-  value: number
+  startValue: number
+  maxValue: number
   callback: () => void
 }
 
-function Button({title,value,callback}: ButtonType) {
+function Button({error,editMode, title, startValue, maxValue, callback}: ButtonType) {
   const clickHandler = () => {
     callback()
   }
-  const disabled = (title === 'inc' && value >= 5)
-    || (title === 'reset' && value === 0)
-
+  const disabled = error || editMode || (title === 'inc' && startValue >= maxValue)
+    || (title === 'reset' && maxValue !== startValue)
+  
   return (
     <button
       className={`btn ${disabled ? 'disabled' : null}`}

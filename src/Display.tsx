@@ -2,14 +2,19 @@ import React from 'react'
 import './App.css'
 
 type DisplayType = {
-  value: number
+  editMode: boolean
+  error: boolean
+  startValue: number
+  maxValue: number
 }
 
-function Display({value}: DisplayType) {
-
+function Display({error, editMode, startValue, maxValue}: DisplayType) {
   return (
     <div className='display-wrapper'>
-      <div className={`display-count ${value === 5 ? 'red' : ''}`}>{value}</div>
+      {error ? <div className={'display-error'}>Invalid value</div> :
+        editMode ? <div className={'display-message'}>Enter set to save changes</div> :
+          <div className={`display-count ${startValue === maxValue ? 'red' : ''}`}>{startValue}</div>
+      }
     </div>
   )
 }
