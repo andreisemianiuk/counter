@@ -11,7 +11,10 @@ function App() {
   let [errorMax, setErrorMax] = useState(false)
   let [errorStart, setErrorStart] = useState(false)
   
-  const error = errorMax || errorStart
+  let error = errorMax || errorStart
+  if (!maxValue && !startValue) {
+    error = true
+  }
   
   useEffect(() => {
     const newStartValue = localStorage.getItem('start-value')
