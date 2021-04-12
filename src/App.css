@@ -53,22 +53,31 @@
 	color: gold;
 }
 
-/*=========== Counter ============*/
+/*=========== Page 404 ============*/
+.error-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
 
-.number {
+.error-number {
 	font-size: 10em;
 	color: red;
 }
 
-.text {
+.error-text {
 	color: red;
 	font-size: 3em;
 }
 
-.smile {
+.error-smile {
 	color: red;
 	font-size: 2em;
 }
+
+
+/*=========== Counter ============*/
 
 .container {
 	display: flex;

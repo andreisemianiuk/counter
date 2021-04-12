@@ -10,12 +10,32 @@
 .counter {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	align-items: center;
-	width: 300px;
-	height: 200px;
-	padding-top: 10px;
+	width: 23%;
+	height: 40%;
 	border: 3px solid ghostwhite;
 	border-radius: 10px;
+}
+
+.settings {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 280px;
+	height: 200px;
+	border: 3px solid ghostwhite;
+	border-radius: 10px;
+}
+
+.settingsWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 90%;
+	height: 55%;
 }
 
 .buttonsWrapper {
@@ -24,17 +44,6 @@
 	align-items: center;
 	width: 90%;
 	height: 30%;
-	border: 3px solid ghostwhite;
-	border-radius: 10px;
-}
-
-.displayWrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 90%;
-	height: 55%;
-	margin-bottom: 10px;
 	border: 3px solid ghostwhite;
 	border-radius: 10px;
 }

@@ -1,59 +1,48 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent } from 'react'
 import './App.css'
 
 type SettingsType = {
-  errorMax: boolean
-  errorStart: boolean
+  setStartValue: (num: number) => void
+  setMaxValue: (num: number) => void
+  className?: string
   startValue: number
   maxValue: number
-  changeStartValue: (num: number) => void
-  changeMaxValue: (num: number) => void
 }
 
 function Settings(props: SettingsType) {
-  let [startValue, setStartValue] = useState(0)
-  let [maxValue, setMaxValue] = useState(0)
+  const {startValue, maxValue, setMaxValue, setStartValue} = props
   
-  useEffect(() => {
-    let newStartValue = localStorage.getItem('start-value')
-    let newMaxValue = localStorage.getItem('max-value')
-    if (newStartValue) {
-      setStartValue(JSON.parse(newStartValue))
-    }
-    if (newMaxValue) {
-      setMaxValue(JSON.parse(newMaxValue))
-    }
-  }, [])
-  
-  const changeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     const num = +e.currentTarget.value
-    setStartValue(num)
-    props.changeStartValue(num)
-  }
-  const changeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-    const num = +e.currentTarget.value
-    setMaxValue(num)
-    props.changeMaxValue(num)
+    const value = e.currentTarget.dataset.value
+    
+    if (value === 'max') {
+      setMaxValue(num)
+    } else if (value === 'start') {
+      setStartValue(num)
+    }
   }
   
   return (
-    <div className='settings-wrapper'>
+    <div className={props.className ? props.className : 'settings-wrapper'}>
       <div className={'settings-input-wrapper'}>
         max value:
         <input
-          className={`settings-input ${props.errorMax ? 'error' : ''}`}
+          className={`settings-input ${maxValue <= startValue ? 'error' : ''}`}
+          data-value={'max'}
           type={'number'}
           value={maxValue}
-          onChange={changeMaxValue}
+          onChange={changeValue}
         />
       </div>
       <div className={'settings-input-wrapper'}>
         start value:
         <input
-          className={`settings-input ${props.errorStart ? 'error' : ''}`}
+          className={`settings-input ${startValue < 0 || startValue >= maxValue ? 'error' : ''}`}
           type={'number'}
+          data-value={'start'}
           value={startValue}
-          onChange={changeStartValue}
+          onChange={changeValue}
         />
       </div>
     </div>
